@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0C830E02BC752ED0086190D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C830DF2BC752ED0086190D /* ApiClient.swift */; };
+		D0C830E22BC753300086190D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C830E12BC753300086190D /* SearchView.swift */; };
+		D0C830E42BC753530086190D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C830E32BC753530086190D /* SearchViewModel.swift */; };
+		D0C830E62BC7538C0086190D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C830E52BC7538C0086190D /* Model.swift */; };
 		D0D6B1FD2BC73870008FC722 /* Duck_Duke_Go_SearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6B1FC2BC73870008FC722 /* Duck_Duke_Go_SearchApp.swift */; };
 		D0D6B1FF2BC73870008FC722 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6B1FE2BC73870008FC722 /* ContentView.swift */; };
 		D0D6B2012BC73871008FC722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D6B2002BC73871008FC722 /* Assets.xcassets */; };
 		D0D6B2042BC73871008FC722 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D6B2032BC73871008FC722 /* Preview Assets.xcassets */; };
+		D0FB544C2BC7A57A00396DE6 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB544B2BC7A57A00396DE6 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0C830DF2BC752ED0086190D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		D0C830E12BC753300086190D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D0C830E32BC753530086190D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		D0C830E52BC7538C0086190D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D0D6B1F92BC73870008FC722 /* Duck Duke Go Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Duck Duke Go Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D6B1FC2BC73870008FC722 /* Duck_Duke_Go_SearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duck_Duke_Go_SearchApp.swift; sourceTree = "<group>"; };
 		D0D6B1FE2BC73870008FC722 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0D6B2002BC73871008FC722 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0D6B2032BC73871008FC722 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0FB544B2BC7A57A00396DE6 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +42,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D012DDA22BC7510300ABFAE2 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				D0C830DF2BC752ED0086190D /* ApiClient.swift */,
+				D0C830E52BC7538C0086190D /* Model.swift */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		D012DDA32BC7511F00ABFAE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0C830E12BC753300086190D /* SearchView.swift */,
+				D0FB544B2BC7A57A00396DE6 /* SearchBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D012DDA42BC7518900ABFAE2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D0C830E32BC753530086190D /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D0D6B1F02BC73870008FC722 = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				D0D6B1FC2BC73870008FC722 /* Duck_Duke_Go_SearchApp.swift */,
+				D012DDA42BC7518900ABFAE2 /* ViewModel */,
+				D012DDA32BC7511F00ABFAE2 /* Views */,
+				D012DDA22BC7510300ABFAE2 /* NetWork */,
 				D0D6B1FE2BC73870008FC722 /* ContentView.swift */,
 				D0D6B2002BC73871008FC722 /* Assets.xcassets */,
 				D0D6B2022BC73871008FC722 /* Preview Content */,
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FB544C2BC7A57A00396DE6 /* SearchBar.swift in Sources */,
+				D0C830E22BC753300086190D /* SearchView.swift in Sources */,
+				D0C830E42BC753530086190D /* SearchViewModel.swift in Sources */,
 				D0D6B1FF2BC73870008FC722 /* ContentView.swift in Sources */,
+				D0C830E62BC7538C0086190D /* Model.swift in Sources */,
 				D0D6B1FD2BC73870008FC722 /* Duck_Duke_Go_SearchApp.swift in Sources */,
+				D0C830E02BC752ED0086190D /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
