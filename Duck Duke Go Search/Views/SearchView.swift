@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @StateObject var viewModel = SearchViewModel()
+    @ObservedObject var viewModel = SearchViewModel()
     
     @State private var SearchText = ""
     
@@ -17,43 +17,47 @@ struct SearchView: View {
         NavigationView {
             VStack {
                 Text("Search")
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.bottom, 20)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 20)
                 
-                SearchBar(text: $SearchText)
+                SearchBar(viewModel: viewModel, text: $SearchText)
                 
                 List {
                     Section(header: Text("RESULTS")) {
-                        ForEach(viewModel.searchResults, id: \.results) { index in
-                            Text("\(ResultURL.self)")
+                        ForEach(viewModel.searchResults?.results ??  [], id: \.result) {
+                            item in
+                            VStack (alignment: .leading) {
+                                Text(item.text ?? "")
+                                    .font(.headline)
+                                Text(item.firstURL ?? "")
+                                    .font(.subheadline)
+                                    .foregroundColor(.blue)
                             
-                            
-                        }
+                            }
+                                    }
                     }
                     Section(header: Text("Related Topics")) {
-                        ForEach(viewModel.searchResults, id: \.relatedTopics) { index in
-                            Text("\(RelatedTopic.self)")
+                        ForEach(viewModel.searchResults?.relatedTopics ?? [], id: \.result) { index in
+                            VStack(alignment: .leading) {
+                                Text("\(index.result)")
+                                Text("\(index.firstURL)")
+                            }
                         }
                     }
                 }
                 
                 .listStyle(GroupedListStyle())
             }
-            
+                                    
         }
+                                    
     }
 }
 
-
-
-/*struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()*/
-    
-
-
-
+                                    
 #Preview {
     SearchView()
 }
+
+

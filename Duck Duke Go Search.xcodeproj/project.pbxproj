@@ -56,6 +56,7 @@
 			children = (
 				D0C830E12BC753300086190D /* SearchView.swift */,
 				D0FB544B2BC7A57A00396DE6 /* SearchBar.swift */,
+				D0D6B2022BC73871008FC722 /* Preview Content */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,7 +94,6 @@
 				D012DDA22BC7510300ABFAE2 /* NetWork */,
 				D0D6B1FE2BC73870008FC722 /* ContentView.swift */,
 				D0D6B2002BC73871008FC722 /* Assets.xcassets */,
-				D0D6B2022BC73871008FC722 /* Preview Content */,
 			);
 			path = "Duck Duke Go Search";
 			sourceTree = "<group>";
@@ -103,7 +103,8 @@
 			children = (
 				D0D6B2032BC73871008FC722 /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			name = "Preview Content";
+			path = "../Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

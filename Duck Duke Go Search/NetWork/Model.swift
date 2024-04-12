@@ -1,3 +1,5 @@
+
+import Foundation
 //
 //  Model.swift
 //  Duck Duke Go Search
@@ -8,53 +10,17 @@
 import Foundation
 
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let news = try? JSONDecoder().decode(News.self, from: jsonData)
-
-import Foundation
-
-// MARK: - News
+//MARK: - Welcome
 struct News: Codable {
-    let abstract, abstractSource, abstractText: String
-    let abstractURL: String
-    let answer, answerType, definition, definitionSource: String
-    let definitionURL, entity, heading, image: String
-    let imageHeight, imageIsLogo, imageWidth: String
-    let infobox: String?
-    let officialDomain: String?
-    let officialWebsite: String?
-    let redirect: String
+
     let relatedTopics: [RelatedTopic]
-    let results: [ResultURL] //Se le agrego url
-    let type: String
-    let meta: String?
+    let results: [ResultURL] //Se agrego URL
+
 
     enum CodingKeys: String, CodingKey {
-        case abstract = "Abstract"
-        case abstractSource = "AbstractSource"
-        case abstractText = "AbstractText"
-        case abstractURL = "AbstractURL"
-        case answer = "Answer"
-        case answerType = "AnswerType"
-        case definition = "Definition"
-        case definitionSource = "DefinitionSource"
-        case definitionURL = "DefinitionURL"
-        case entity = "Entity"
-        case heading = "Heading"
-        case image = "Image"
-        case imageHeight = "ImageHeight"
-        case imageIsLogo = "ImageIsLogo"
-        case imageWidth = "ImageWidth"
-        case infobox = "Infobox"
-        case officialDomain = "OfficialDomain"
-        case officialWebsite = "OfficialWebsite"
-        case redirect = "Redirect"
         case relatedTopics = "RelatedTopics"
         case results = "Results"
-        case type = "Type"
-        case meta
+ 
     }
 }
 
@@ -62,13 +28,19 @@ struct News: Codable {
 struct Infobox: Codable {
     let content: [Content]
     let meta: [MetaElement]
+    
+    enum CodingKeys: String, CodingKey {
+            case content, meta
+        }
+    
 }
 
 // MARK: - Content
 struct Content: Codable {
-    let dataType, label: String
-    let value: ValueUnion
-    let wikiOrder: WikiOrder
+    
+    let dataType, label: String?
+    let value: ValueUnion?//
+    let wikiOrder: WikiOrder?//
 
     enum CodingKeys: String, CodingKey {
         case dataType = "data_type"
@@ -78,9 +50,9 @@ struct Content: Codable {
 }
 
 enum ValueUnion: Codable {
-    case string(String)
-    case stringArray([String])
-    case valueClass(ValueClass)
+    case string(String?) //?
+    case stringArray([String?]) //?
+    case valueClass(ValueClass?) //?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -113,9 +85,9 @@ enum ValueUnion: Codable {
 }
 
 // MARK: - ValueClass
-struct ValueClass: Codable, Hashable {
-    let entityType, id: String
-    let numericID: Int
+struct ValueClass: Codable, Hashable  {
+    let entityType, id: String?
+    let numericID: Int?
 
     enum CodingKeys: String, CodingKey {
         case entityType = "entity-type"
@@ -153,7 +125,7 @@ enum WikiOrder: Codable {
 }
 
 // MARK: - MetaElement
-struct MetaElement: Codable, Hashable {
+struct MetaElement: Codable, Hashable  {
     let dataType, label, value: String
 
     enum CodingKeys: String, CodingKey {
@@ -162,28 +134,28 @@ struct MetaElement: Codable, Hashable {
     }
 }
 
-// MARK: - NewsMeta
-struct NewsMeta: Codable {
-    let attribution, blockgroup, createdDate: JSONNull?
-    let description: String
-    let designer, devDate: JSONNull?
-    let devMilestone: String
+// MARK: - WelcomeMeta
+struct WelcomeMeta: Codable {
+    let attribution, blockgroup, createdDate: String?
+    let description: String?
+    let designer, devDate: String?
+    let devMilestone: String?
     let developer: [Developer]
     let exampleQuery, id: String
-    let isStackexchange: JSONNull?
+    let isStackexchange: String?
     let jsCallbackName: String
-    let liveDate: JSONNull?
+    let liveDate: String?
     let maintainer: Maintainer
     let name, perlModule: String
-    let producer: JSONNull?
+    let producer: String? //
     let productionState, repo, signalFrom, srcDomain: String
     let srcID: Int
     let srcName: String
     let srcOptions: SrcOptions
-    let srcURL: JSONNull?
+    let srcURL: String?
     let status, tab: String?
     let topic: [String]
-    let unsafe: Int?
+    let unsafe: Int
 
     enum CodingKeys: String, CodingKey {
         case attribution, blockgroup
@@ -213,18 +185,18 @@ struct NewsMeta: Codable {
 }
 
 // MARK: - Developer
-struct Developer: Codable, Hashable {
+struct Developer: Codable, Hashable  {
     let name, type: String
     let url: String
 }
 
 // MARK: - Maintainer
-struct Maintainer: Codable {
+struct Maintainer: Codable, Hashable  {
     let github: String
 }
 
 // MARK: - SrcOptions
-struct SrcOptions: Codable, Hashable {
+struct SrcOptions: Codable, Hashable  {
     let directory: String
     let isFanon, isMediawiki, isWikipedia: Int
     let language, minAbstractLength: String
@@ -252,9 +224,9 @@ struct SrcOptions: Codable, Hashable {
 }
 
 // MARK: - RelatedTopic
-struct RelatedTopic: Codable, Hashable {
+struct RelatedTopic: Codable, Hashable  {
     let firstURL: String
-    let icon: RelatedTopicIcon
+    let icon: RelatedTopicIcon?
     let result, text: String
 
     enum CodingKeys: String, CodingKey {
@@ -266,7 +238,7 @@ struct RelatedTopic: Codable, Hashable {
 }
 
 // MARK: - RelatedTopicIcon
-struct RelatedTopicIcon: Codable, Hashable {
+struct RelatedTopicIcon: Codable, Hashable  {
     let height, url, width: String
 
     enum CodingKeys: String, CodingKey {
@@ -277,10 +249,10 @@ struct RelatedTopicIcon: Codable, Hashable {
 }
 
 // MARK: - Result
-struct ResultURL: Codable, Hashable { //se agrego URL A Result
-    let firstURL: String
+struct ResultURL: Codable, Hashable  {
+    let firstURL: String?
     let icon: ResultIcon
-    let result, text: String
+    let result, text: String?
 
     enum CodingKeys: String, CodingKey {
         case firstURL = "FirstURL"
@@ -291,10 +263,10 @@ struct ResultURL: Codable, Hashable { //se agrego URL A Result
 }
 
 // MARK: - ResultIcon
-struct ResultIcon: Codable, Hashable {
-    let height: Int
-    let url: String
-    let width: Int
+struct ResultIcon: Codable, Hashable  {
+    let height: Int?
+    let url: String?
+    let width: Int?
 
     enum CodingKeys: String, CodingKey {
         case height = "Height"
@@ -305,27 +277,19 @@ struct ResultIcon: Codable, Hashable {
 
 // MARK: - Encode/decode helpers
 
-class JSONNull: Codable, Hashable {
 
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
 
-    public var hashValue: Int {
-        return 0
-    }
 
-    public init() {}
-
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
+//EJEMPLO DE COMO CONTRUIR EL MODELO
+/*struct SearchResultResponse {
+    var abstrac: String?
 }
+
+struct Infobox1 {
+    let content:
+}
+
+struct Content1 {
+    let da
+}*/
+

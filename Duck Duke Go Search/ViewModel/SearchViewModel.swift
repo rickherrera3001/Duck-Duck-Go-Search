@@ -9,22 +9,17 @@ import Foundation
 
 class SearchViewModel: ObservableObject {
     
-        @Published var searchResults: [News] = []
+        @Published var searchResults: News?
         @Published var searchText: String = ""
         
         private let apiClient = ApiClient()
         
-        init() {
-            // Llamamos a la función de búsqueda al iniciar el ViewModel
-        }
         
     func search(query: String) {
-            apiClient.getSearchResults { result in
+            apiClient.getSearchResult(query: query ) { result in
                 switch result {
                 case .success(let News):
-                    DispatchQueue.main.async {
-                        self.searchResults = [News]
-                    }
+                    self.searchResults = News
                 case .failure(let error):
                     print("Error fetching search results: \(error)")
                 }
@@ -32,10 +27,3 @@ class SearchViewModel: ObservableObject {
         }
     }
 
-
-
-
-    
-    
-
- 
